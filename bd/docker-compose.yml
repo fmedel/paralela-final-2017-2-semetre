@@ -1,0 +1,21 @@
+version: '2'
+
+# docker network inspect fmedel_network
+# docker network create fmedel_network
+
+networks:
+  distribuida:
+    external:
+      name: fmedel_network
+
+services:
+  postgres:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "56432:5432"
+    environment:
+      POSTGRES_USER: felipe
+      POSTGRES_PASSWORD: latoo+12
+      POSTGRES_DB: fmedel
