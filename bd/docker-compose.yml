@@ -14,8 +14,8 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "56432:5432"
+      - "8082:5432"
     environment:
-      POSTGRES_USER: felipe
-      POSTGRES_PASSWORD: latoo+12
-      POSTGRES_DB: fmedel
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: docker

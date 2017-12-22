@@ -6,7 +6,7 @@ const pgp = require('pg-promise')();
 
 const db_user = 'docker' || process.env.DB_USERNAME;
 const db_pass = 'docker' || process.env.DB_PASSWORD;
-const db_host = 'postgres' || process.env.DB_HOST;
+const db_host = '146.83.181.4' || process.env.DB_HOST;
 const db_port = '8082' || process.env.DB_PORT;
 const db_database = 'docker' || process.env.DB_DATABASE;
 const db_url = 'postgres://' + db_user + ':' + db_pass + '@' + db_host + ':' + db_port+'/'+db_database;

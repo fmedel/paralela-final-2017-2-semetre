@@ -6,14 +6,12 @@ networks:
       name: fmedel_network
 
 services:
-  web:
+  api:
     build:
       context: .
       dockerfile: api.dockerfile
-    #command: npm start
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules
     ports:
       - "8085:8085"
-#    environment:

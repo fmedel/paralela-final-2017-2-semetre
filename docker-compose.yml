@@ -8,10 +8,11 @@ networks:
     external:
       name: fmedel_network
 
+#Capa logica
 services:
-  web:
+  api:
     build:
-      context: .
+      context: ./api
       dockerfile: api.dockerfile
     volumes:
       - ./api:/usr/app/
@@ -20,7 +21,8 @@ services:
       - "8085:8085"
     links:
       - postgres
-
+    networks:
+      - distribuida
 
 # Capa de persistencia
   postgres:
@@ -30,6 +32,19 @@ services:
     ports:
       - 8082:5432
     environment:
-      POSTGRES_USER : docker
-      POSTGRES_PASSWORD : docker
-      POSTGRES_DB : docker
+          POSTGRES_USER: docker
+          POSTGRES_PASSWORD: docker
+          POSTGRES_DB: docker
+    networks:
+      - distribuida
+#Capa de presentacion
+  web:
+    build:
+      context: ./angular
+      dockerfile: web.dockerfile
+    ports:
+      - 8081:80
+    links:
+      - api
+    networks:
+      - distribuida
